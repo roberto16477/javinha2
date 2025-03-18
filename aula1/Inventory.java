@@ -1,5 +1,7 @@
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Inventory {
     private List<Guitar> guitars;
@@ -22,21 +24,25 @@ public class Inventory {
         return null;
     }
 
-    public Guitar search(Guitar searchGuitar) {
-        for (Guitar guitar : guitars) {
-            if (searchGuitar.getBuilder() != guitar.getBuilder()) continue;
-            if (searchGuitar.getType() != guitar.getType()) continue;
-            if (searchGuitar.getBackWood() != guitar.getBackWood()) continue;
-            if (searchGuitar.getTopWood() != guitar.getTopWood()) continue;
-
-            String model = searchGuitar.getModel();
-            if (model != null && !model.isEmpty() &&
-                !model.equalsIgnoreCase(guitar.getModel())) {
+    public List search(GuitarSpec searchSpec) {
+        List<Guitar> matchingGuitars = new LinkedList<>();
+        for (Iterator i = guitars.iterator(); i.hasNext(); ) {
+            Guitar guitar = (Guitar) i.next();
+            GuitarSpec guitarSpec = guitar.getSpec();
+            if (searchSpec.getBuilder() != guitarSpec.getBuilder())
                 continue;
-            }
-
-            return guitar;
+            String model = searchSpec.getModel().toLowerCase();
+            if ((model != null) && (!model.equals("")) &&
+                (!model.equals(guitarSpec.getModel().toLowerCase())))
+                continue;
+            if (searchSpec.getType() != guitarSpec.getType())
+                continue;
+            if (searchSpec.getBackWood() != guitarSpec.getBackWood())
+                continue;
+            if (searchSpec.getTopWood() != guitarSpec.getTopWood())
+                continue;
+            matchingGuitars.add(guitar);
         }
-        return null;
+        return matchingGuitars;
     }
 }

@@ -1,21 +1,31 @@
+import java.util.Iterator;
+import java.util.List;
+
 public class FindGuitarTest {
     public static void main(String[] args) {
         Inventory inventory = new Inventory();
         initializeInventory(inventory);
-
-        Guitar whatErinLikes = new Guitar("null", 0, Builder.FENDER, "Stratocastor", Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
-        Guitar guitar = inventory.search(whatErinLikes);
-
-        if (guitar != null) {
-            System.out.println("A guitarra perfeita pra Erin é: ");
-            System.out.println("Modelo: " + guitar.getModel());
-            System.out.println("Construtor: " + guitar.getBuilder());
-            System.out.println("Tipo: " + guitar.getType());
-            System.out.println("Madeira traseira: " + guitar.getBackWood());
-            System.out.println("Madeira superior: " + guitar.getTopWood());
-            System.out.println("Preço: R$" + guitar.getPrice());
+    
+        GuitarSpec whatErinLikes = 
+            new GuitarSpec(Builder.FENDER, "Stratocastor", Type.ELECTRIC, 
+                           Wood.ALDER, Wood.ALDER);
+    
+        List matchingGuitars = inventory.search(whatErinLikes);
+        if (!matchingGuitars.isEmpty()) {
+            System.out.println("Erin, you might like these guitars:");
+            for (Iterator i = matchingGuitars.iterator(); i.hasNext(); ) {
+                Guitar guitar = (Guitar) i.next();
+                GuitarSpec spec = guitar.getSpec();
+    
+                System.out.println("We have a " + 
+                    spec.getBuilder() + " " + spec.getModel() + " " +
+                    spec.getType() + " guitar:\n" +
+                    spec.getBackWood() + " back and sides,\n" +
+                    spec.getTopWood() + " top. You can have it for only $" + 
+                    guitar.getPrice() + "!\n ----");
+            }
         } else {
-            System.out.println("Nenhuma guitarra encontrada para Erin.");
+            System.out.println("Sorry, Erin, we have nothing for you.");
         }
     }
 
