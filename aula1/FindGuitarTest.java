@@ -28,7 +28,7 @@ public class FindGuitarTest {
             System.out.println("Sorry, Erin, we have nothing for you.");
         }
     }
-
+ // coment
     private static void initializeInventory(Inventory inventory) {
         inventory.addGuitar("E0705", 1499.99, Builder.FENDER, "Stratocastor", Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
         inventory.addGuitar("E1310", 1549.99, Builder.GIBSON, "Les Paul", Type.ELECTRIC, Wood.MAHOGANY, Wood.MAPLE);
