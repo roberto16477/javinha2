@@ -4,6 +4,7 @@ public abstract class Personagem {
     protected Arma arma;
 
     public void lutar() {
+        System.out.print(getClass().getSimpleName() + " está lutando: ");
         if (arma != null) {
             arma.usarArma();
         } else {
