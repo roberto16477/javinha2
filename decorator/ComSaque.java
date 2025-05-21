@@ -1,10 +1,10 @@
-public class ComVodka extends DrinkDecorator {
-    public ComVodka(Drink drink) {
+public class ComSaque extends DrinkDecorator {
+    public ComSaque(Drink drink) {
         super(drink);
     }
 
     public String getDescricao() {
-        return drink.getDescricao() + ", vodka";
+        return drink.getDescricao() + ", saquê";
     }
 
     public double getPreco() {
