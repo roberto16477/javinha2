@@ -14,7 +14,7 @@ public class Main {
         Drink meuDrink2 = new CaipiraBase();
         meuDrink2 = new ComSaque(meuDrink2);
         meuDrink2 = new ComKiwi(meuDrink2);
-        meuDrink2 = new ComAdocante(meuDrink2);
+        meuDrink2 = new ComAcucar(meuDrink2);
 
         System.out.println("Pedido: " + meuDrink2.getDescricao());
         System.out.println("Preço: R$ " + meuDrink2.getPreco());
