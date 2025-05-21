@@ -8,6 +8,6 @@ public class ComMorango extends DrinkDecorator {
     }
 
     public double getPreco() {
-        return drink.getPreco() + 3.5;
+        return drink.getPreco() + 4.0;
     }
 }
