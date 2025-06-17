@@ -1,3 +1,4 @@
+package TM2;
 public abstract class ProcessadorString {
     // Template method
     public void processar(String s) {
