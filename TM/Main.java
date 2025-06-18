@@ -1,4 +1,4 @@
-package TM2;
+package TM;
 public class Main {
     public static void main(String[] args) {
         String texto = "Ressaca's Bar";
